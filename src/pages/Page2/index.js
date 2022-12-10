@@ -6,69 +6,76 @@ import { api } from 'api'
 
 //Types
 import QUERYKEYS from 'features/types/queryKeys'
+import { useNavigate } from 'react-router-dom'
 
 function Page2() {
-    const {data, isLoading, isError} = useQuery(
-      { 
-        queryKey: [QUERYKEYS.data1], 
-        queryFn: async function(){
-          try{
+  const navigate = useNavigate()
+  //   const {data, isLoading, isError} = useQuery(
+  //     { 
+  //       queryKey: [QUERYKEYS.data1], 
+  //       queryFn: async function(){
+  //         try{
 
-            const response = await api.data1('dorai').promise('open')
+  //           const response = await api.data1('dorai').promise('open')
 
-            if(response){
+  //           if(response){
 
-              return response.data.response
-            }
-          }catch(error){
+  //             return response.data.response
+  //           }
+  //         }catch(error){
 
-            console.log(error)
-          }
-        },
-        retry: 3,
-        refetchOnWindowFocus: false,
-        // refetchInterval: 1000
-        refetchOnMount: false
-      }
-    )
+  //           console.log(error)
+  //         }
+  //       },
+  //       retry: 3,
+  //       refetchOnWindowFocus: false,
+  //       // refetchInterval: 1000
+  //       refetchOnMount: false,
+  //       cacheTime: 10000000
+  //     }
+  //   )
 
-    const mutation = useMutation({
-      mutationFn: async function(){
-        try {
+  //   const mutation = useMutation({
+  //     mutationFn: async function(){
+  //       try {
 
-          const response = await api.data1('1').promise('open')
+  //         const response = await api.data1('1').promise('open')
 
-          if (response) {
+  //         if (response) {
 
-            return response.data.response
-          }
-        } catch (error) {
+  //           return response.data.response
+  //         }
+  //       } catch (error) {
 
-          console.log(error)
-        }
-      },
-      onSuccess: function(){
+  //         console.log(error)
+  //       }
+  //     },
+  //     onSuccess: function(){
 
-        console.log(1)
-      }
-    })
+  //       console.log(1)
+  //     }
+  //   })
 
-  if(isLoading){
+  // if(isLoading){
 
-    return <div>isLoading</div>
-  }
+  //   return <div>isLoading</div>
+  // }
 
-  if(isError){
+  // if(isError){
 
-    return <div>isError</div>
-  }
+  //   return <div>isError</div>
+  // }
 
-  if(data){
+  // if(data){
 
-    return (
-      <div>{`${data.whether_beta}`}</div>
-    )
-  }
+  //   return (
+  //     <div>Page2{`${data.whether_beta}`}</div>
+  //   )
+  // }
+
+  return (
+    <button onClick={function(e){e.preventDefault(); navigate('/page1')}}></button>
+  )
 }
 
 export default Page2
