@@ -29,3 +29,12 @@ export const api = {
     }
 }
 
+export const CAMPAIGNAPI = {
+    async checkId(){
+        try{
+            
+        }catch(error){
+            
+        }
+    }
+}
